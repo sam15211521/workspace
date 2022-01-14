@@ -23,7 +23,7 @@ def bothfunctions():
 
 #widgets
 frame = LabelFrame(root, text = 'This is the frame', padx=5, pady=5)
-buttons = Button(frame, text ='Click Me!', command = lambda: [frame.destroy, openanendingframe()])
+buttons = Button(frame, text ='Click Me!', command = lambda: [openanendingframe()])
 
 
 #packing

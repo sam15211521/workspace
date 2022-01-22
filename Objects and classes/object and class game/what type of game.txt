@@ -1,0 +1,19 @@
+I think the game should be realy simple. you move from one side to another with obsticals. skills increase with use
+
+
+    class MC
+        has
+            armor
+            size
+            weapon
+            skills
+            health points
+            magic points
+        can
+            use skills
+            use weapon
+            move
+            collect item
+            change armor (causes defensive increase)
+
+        

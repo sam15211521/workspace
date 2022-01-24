@@ -1,0 +1,56 @@
+from tkinter import Y
+
+
+tables = {
+  1: ['Jiho', False],
+  2: [],
+  3: [],
+  4: [],
+  5: [],
+  6: [],
+  7: [],
+}
+print(tables)
+
+# Write your code below: 
+
+def assign_table(table_number, name, vip_status =False):
+  tables.update({table_number: [name, vip_status]})
+    
+
+def enter_customer():
+    continue_more = True
+    if continue_more ==True:
+        new_customer = input("is there a new customer? Y/N ")
+        if new_customer.upper() == 'N':
+            print("Have a nice day.")
+        elif new_customer.upper() == 'Y':
+            table = int(input("What Table number? "))
+            c_name = input("What is their name?")
+            is_VIP = input("Are they a VIP?")
+            if is_VIP.upper() == 'YES':
+                assign_table(table_number=table, name = c_name, vip_status=True)
+            elif is_VIP.upper() =='NO':
+                assign_table(table_number=table, name = c_name)
+    
+        print(tables)
+        more_to_add = input('any other customers? Y/N ')
+        if more_to_add.upper() =='N':
+            continue_more = False
+
+
+enter_customer()   
+    
+
+
+
+
+
+#added parts 
+
+#assign_table(6,'Yoni', False)
+
+#assign_table(table_number =3, name = "Martha", vip_status =True)
+#assign_table(4, "Karla")
+
+#print(tables)

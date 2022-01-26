@@ -2,7 +2,7 @@ import random
 
 
 class MC: # class to create the main character. it gives his base health as well as 
-    def __init__(self, name_input ='', level=1, skill_input = None, weapon_input =None, armor_input =None, health_points=100, magic_points=20, attack=10, x_cor=None, y_cor=None):
+    def __init__(self, name_input ='', level=1, skill_input = None, weapon_input ='NO WEAPON', armor_input ='NO ARMOR', health_points=100, magic_points=20, attack=10, x_cor=1, y_cor=1):
         self.name = name_input
         self.level = level
         self.skills = skill_input
@@ -14,6 +14,14 @@ class MC: # class to create the main character. it gives his base health as well
         self.x_cor = x_cor
         self.y_cor = y_cor
         self.status = []
+    
+    def __repr__(self):
+        
+        message = print(f"""
+        {self.name}'s level is {str(self.level)}. He has {str(len(self.skills))} skills, and is equiped with a {self.weapon} for a weapon, as well as a {self.armor} for armor. 
+{self.name} has {self.health} health points and {self.magic} magic points as well as {self.attack} points.
+""")
+        return message
 
 
     def move(self, direction =''):
@@ -43,8 +51,11 @@ class MC: # class to create the main character. it gives his base health as well
     def use_magic():
         pass
 
+    def gain_skill(self, skill):
+        pass
+
 class Enemy:
-    def __init__(self, name_input ='', skill_input = None, weapon_input =None, armor_input =None, health_points=100, magic_points=20, level, attack, x_cor, y_cor):
+    def __init__(self, name_input ='', skill_input = None, weapon_input =None, armor_input =None, health_points=100, magic_points=20, level= None, attack=None, x_cor =0, y_cor= 0):
         self.name = name_input
         self.skills = skill_input
         self.weapon= weapon_input
@@ -75,7 +86,8 @@ class Armor:
         self.defence = DP
         self.type = armor_type
 class Skill:
-    def __init__(self, target = 'Enemy', damage, healing, cost):
+    def __init__(self, description = '', target = 'Enemy', damage = 0, healing = False, cost = 0):
+        self.description = description
         self.target = target
         self.damage =damage
         self.healing = healing
@@ -84,3 +96,6 @@ class Skill:
 
 
 
+person = MC('Sam', 1,['Fireball', 'water gun'], 'No Weapon', 'No Armor', x_cor=1, y_cor=1)
+
+print(person)

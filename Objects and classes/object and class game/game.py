@@ -1,4 +1,4 @@
-import random
+
 
 
 class MC: # class to create the main character. it gives his base health as well as 
@@ -15,14 +15,20 @@ class MC: # class to create the main character. it gives his base health as well
         self.y_cor = y_cor
         self.status = []
     
+
+    #prints off the basic status of character
     def __repr__(self):
         
         message = print(f"""
         {self.name}'s level is {str(self.level)}. He has {str(len(self.skills))} skills, and is equiped with a {self.weapon} for a weapon, as well as a {self.armor} for armor. 
-{self.name} has {self.health} health points and {self.magic} magic points as well as {self.attack} points.
+{self.name} has {self.health} health points and {self.magic} magic points as well as {self.attack} attack points.
 """)
+        Ailments =
         return message
 
+
+    def print_ailments(self, ailments = self.status):
+        message = f"\n{self.name} is suffering from: "
 
     def move(self, direction =''):
         #function to move in any direction one space at a time

@@ -1,7 +1,8 @@
-from pickletools import read_bytes1
 import pygame
 import random
 import math
+
+from pygame import mixer
 
 
 #Initialze the pygame
@@ -20,6 +21,9 @@ def show_score(x, y):
     screen.blit(score, (x,y))
 
 
+#backgroud Sound
+mixer.music.load('background.wav')
+mixer.music.play(-1)
 
 
 #create screen
@@ -96,6 +100,15 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
         return True
     else:
         return False
+    
+
+#game over Text
+over_font = pygame.font.Font('freesansbold.ttf', 64)
+
+def game_over_text():
+    over_text = over_font.render('GAME OVER', True, (255, 255, 255))
+    screen.blit(over_text, (200, 250))
+
 
 
 #game is over when it hits an area
@@ -140,12 +153,21 @@ while running:
             
             enemyX[i] = random.randint(0,735)
             enemyY[i] = random.randint(50,150)
+            explosion_sound = mixer.Sound('explosion.wav')
+            explosion_sound.play()
         
         enemy(enemyX[i], enemyY[i], i)
 
+        # Game Over
+
         if enemyY[i] > 450:
-            print("Game Over")
-            running = False
+            for j in range(num_of_enemies):
+                enemyY[j] = 2000
+            game_over_text()
+            break
+
+            #print("Game Over")
+            #running = False
 
 
 
@@ -181,6 +203,8 @@ while running:
                 playerX_change = .8
             if event.key == pygame.K_SPACE:
                 if bullet_state == 'ready':
+                    bullet_sound = mixer.Sound('laser.wav')
+                    bullet_sound.play()
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
                 

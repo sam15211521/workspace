@@ -22,8 +22,9 @@ def show_score(x, y):
 
 
 #backgroud Sound
-mixer.music.load('background.wav')
-mixer.music.play(-1)
+
+#mixer.music.load('background.wav')
+#mixer.music.play(-1)
 
 
 #create screen
@@ -153,8 +154,8 @@ while running:
             
             enemyX[i] = random.randint(0,735)
             enemyY[i] = random.randint(50,150)
-            explosion_sound = mixer.Sound('explosion.wav')
-            explosion_sound.play()
+            #explosion_sound = mixer.Sound('explosion.wav')
+            #explosion_sound.play()
         
         enemy(enemyX[i], enemyY[i], i)
 
@@ -203,8 +204,8 @@ while running:
                 playerX_change = .8
             if event.key == pygame.K_SPACE:
                 if bullet_state == 'ready':
-                    bullet_sound = mixer.Sound('laser.wav')
-                    bullet_sound.play()
+                    #bullet_sound = mixer.Sound('laser.wav')
+                    #bullet_sound.play()
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
                 

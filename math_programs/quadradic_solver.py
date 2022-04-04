@@ -1,5 +1,12 @@
+def not_main():
+    print('Wrong Program Buddy')
+    exit()
 
-def main(A= int(input("A")), B = int(input("B")), C = int(input('C'))):
+
+def main():
+    A = int(input("A"))
+    B = int(input("B"))
+    C = int(input('C'))
     positive = (-B +(B**2 -4*A*C)**(1/2))/(2*A)
     negative = (-B -(B**2 -4*A*C)**(1/2))/(2*A)
 
@@ -10,5 +17,5 @@ def main(A= int(input("A")), B = int(input("B")), C = int(input('C'))):
 
     print(A*positive**2 + B*positive + C)
 
-
+not_main()
 main()

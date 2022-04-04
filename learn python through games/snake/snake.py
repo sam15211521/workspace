@@ -1,3 +1,4 @@
+from tkinter import colorchooser
 import pygame
 import math
 import random
@@ -17,11 +18,55 @@ class cube(object):
         pass
 
 class snake(object):
+    body = []
+    turns = {}
     def __init__(self, color, pos):
-        pass
+        self.color = color
+        self.head = cube(pos)
+        self.body.append(self.head)
+        self.dirnx = 0
+        self.dirny = 1
 
     def move(self):
-        pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            
+            keys = pygame.key.get_pressed()
+
+            for key in keys:
+                if keys[pygame.K_LEFT]:
+                    self.dirnx = -1
+                    self.diry = 0
+                    self.turn[self.head.pos[:]] = [self.dirnx, self.dirny]
+                
+                elif keys[pygame.K_RIGHT]:
+                    self.dirnx = 1
+                    self.diry = 0
+                    self.turn[self.head.pos[:]] = [self.dirnx, self.dirny]
+
+                elif keys[pygame.K_UP]:
+                    self.dirnx = 0
+                    self.diry = -1
+                    self.turn[self.head.pos[:]] = [self.dirnx, self.dirny]
+
+                elif keys[pygame.K_DOWN]:
+                    self.dirnx = 0
+                    self.diry = -1
+                    self.turn[self.head.pos[:]] = [self.dirnx, self.dirny]
+        
+        for i, c in enumerate(self.body):
+            p = c.pos[:]
+            if p in self.turns:
+                turn = self.turns[p]
+                c.move(turn[0], turn[1])
+                if i == len(self.body)-1:
+                    self.turns.pop(p)
+            else:
+                if c.dirnx == -1 and c.pos[0] <= 0: c.pos = (c.rows-1, c.pos[1])
+                if c.dirnx == -1 and c.pos[0] >= c.rows-1: c.pos = (c.rows-1, c.pos[1])
+                if c.dirny == -1 and c.pos[0] <= c.rows-1: c.pos = (c.rows-1, c.pos[1])
+                if c.dirny == -1 and c.pos[0] <= 0: c.pos = (c.rows-1, c.pos[1])
 
     def reset(self, pos):
         pass
@@ -29,14 +74,26 @@ class snake(object):
     def addCube(self):
         pass
 
-    def draw(self, suravce):
+    def draw(self, surafce):
         pass
 
-def drawGrid(w, rows, survace):
-    pass
+def drawGrid(w, rows, surface):
+    sizeBtwn = w // rows
 
-def redrawWindown(survace):
-    pass
+    x = 0
+    y = 0
+    for line in range(rows):
+        x = x + sizeBtwn-1
+        y = y + sizeBtwn
+
+        pygame.draw.line(surface, (255,255,255), (x, 0) , (x, w))
+        pygame.draw.line(surface, (255,255,255), (0, y) , (w, y))
+
+def redrawWindow(surface):
+    global rows, width
+    surface.fill((0,0,0))
+    drawGrid(width, rows, surface)
+    pygame.display.update()
 
 def randomSnack(rows, items):
     pass
@@ -45,11 +102,21 @@ def message_box(subject, content):
     pass
 
 def main():
-    pass
+    global width, rows
+    width = 500
+    rows = 20
+    win = pygame.display.set_mode((width, width))
+    s = snake((225,0, 0), (10, 10))
+    flag = True
 
-rows = 
-w = 
-h = 
+    clock = pygame.time.Clock()
+    
+    while flag:
+        pygame.time.delay(50)
+        clock.tick(10)
+        redrawWindow(win)
 
-cube.rows = rows
-cube.w = w
+
+main()
+
+

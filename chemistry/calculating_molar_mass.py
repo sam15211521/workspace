@@ -1,6 +1,6 @@
 
 from logging import exception
-from periodictable import formula
+from periodictable import formula, elements
 import periodictable
 
 def find_molar_mass(compound): #finds the molar mass of a compound in grams
@@ -43,16 +43,86 @@ def Enter_compounds(reactants_or_products = 'reactants'): #creates a dictionary 
  
 def making_chemical_equations(reactant_dictionary, product_dictionary):
     equation_string =''
+    
     for key in reactant_dictionary:
         equation_string += key
         equation_string += ' + '
     equation_string = equation_string[:-2] + '-> '
+    
     for key in product_dictionary:
         equation_string += key +' + '
     equation_string = equation_string[:-2]
+
     return equation_string
 
+def seperating_num_of_atoms_of_elements(compounds):
+    elements_in_formula =[]
+    symbol = ''
+    
+    for compound in compounds:  #will make a list of elements
+        for letter in compound:
+            if type(letter) == int:
+                elements_in_formula.append(symbol)            
+            if letter.isupper() == True: 
+                if symbol != '':
+                    elements_in_formula.append(symbol)
+                symbol = ''
+                symbol = letter
+            if letter.islower() == True:
+                symbol += letter
+                      
+            try:    #if a number comes after the symbol, this will repeat the symbol
+                element_atom_amount =type(int(letter))
+                if  element_atom_amount== int:
+                    for ammount in range(int(letter)-1):
+                        elements_in_formula.append(symbol)   
+            except:
+                continue          
+    elements_in_formula.append(symbol)
 
+    return elements_in_formula
+
+
+def counting_num_of_atoms_of_element(compounds): #makes a dict of each element present then combines them into a dict of elements present
+
+    element_number ={}
+
+    
+    lst_of_elements = sorted(seperating_num_of_atoms_of_elements(compounds)) #sorts the elements alphabetically
+    symbol=''
+    count = 0
+    for element in lst_of_elements:
+        if symbol == '':
+            symbol = element
+            count  = 1
+        elif symbol == element:
+            count += 1
+        if symbol != element:
+            element_number[symbol] = count
+            symbol = element
+            count = 1
+    element_number[symbol] = count
+    
+
+    return element_number
+
+def combining_reactants_and_products(reactants, products): #combines dict of elements from both reactants and products and gives a layered dict with number of atoms of each element in the chemical equation
+    dict_of_reactants_and_products ={}
+
+    dict_of_ractants = counting_num_of_atoms_of_element(reactants)
+    dict_of_products = counting_num_of_atoms_of_element(products)
+
+    dict_of_reactants_and_products['Reactants'] = dict_of_ractants
+    dict_of_reactants_and_products['Products'] = dict_of_products
+
+    return dict_of_reactants_and_products
+
+
+def balancing_chemical_equations(reactants, products):
+    pass
+
+def converting_grams_into_moles(reactants, products):
+    pass
 
 
 
@@ -67,8 +137,8 @@ def main():
     
     print(f'{reactants}\n \n{products}')
     
-    chemical_formula_unballanced = making_chemical_equations(reactants, products)
-    print(chemical_formula_unballanced)
+    chemical_equation_unballanced = making_chemical_equations(reactants, products)
+    print(chemical_equation_unballanced)
 
     
 

@@ -124,9 +124,21 @@ def balancing_chemical_equations(reactants, products):
 def converting_grams_into_moles(reactants, products):
     pass
 
+def repeating_objectives():
+    pass
 
 
+def what_to_do(prompt, reactants, products, unbal_formula):
+    flag = True
+    while flag == True:
 
+        if prompt == '1':
+            print()
+            return combining_reactants_and_products(reactants=reactants, products=products)
+        elif prompt == '0':
+            print('\nHave a nice day\n')
+            exit()
+        
 
 
 def main():
@@ -139,6 +151,12 @@ def main():
     
     chemical_equation_unballanced = making_chemical_equations(reactants, products)
     print(chemical_equation_unballanced)
+
+    prompt = input('\n \n type the number of what you want to do now?:  \n 1: determine number of atoms of each element\n 0: quit program ')
+    
+    a=what_to_do(prompt, reactants = reactants, products = products, unbal_formula = chemical_equation_unballanced)
+    print(a)
+
 
     
 

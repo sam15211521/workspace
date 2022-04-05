@@ -1,5 +1,3 @@
-
-from logging import exception
 from periodictable import formula, elements
 import periodictable
 

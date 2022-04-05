@@ -1,3 +1,3 @@
-from quadradic_solver import not_main, main
+from quadradic_solver import not_main
 
 not_main()

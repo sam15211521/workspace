@@ -1,52 +1,52 @@
+from numpy import number
+
+
+def repeating_atoms_of_elements(symbol, number_of_atoms): # makes a list of repeating atoms based on the symbol and number of atoms of an element
+    list_of_atoms = []
+    for i in range(number_of_atoms):
+        list_of_atoms.append(symbol)
+    return list_of_atoms
+
+
 def seperating_num_of_atoms_of_elements(compounds):
     elements_in_formula =[]
-    symbol = ''
-    number_of_atoms =''
-    for compound in compounds:  #will make a list of elements
-        for letter in compound:
-            if type(letter) == int:
-                elements_in_formula.append(symbol)            
-            if letter.isupper() == True: 
-                if symbol != '':
-                    elements_in_formula.append(symbol)
-                symbol = ''
+    symbol = ''                 # the chemical symbol
+    number_of_atoms = ''         # gives the amount of 
+
+    for compound in compounds:  #cycling through compounds
+        index = 0
+        for letter in compound: #cycling through the letter of the compounds
+
+            if symbol =='' and letter.isdigit() == False:     #checks if symbol is blank if blank adds letter to symbol (should not be a number)
                 symbol = letter
-            if letter.islower() == True:
-                symbol += letter
 
+           
+            else:               #if symbol  has a symbol already in it we need to now see if the symbol has any other compounents to it such as a lower case letter or a number
+                if letter.islower() == True: #determines if symbol is lowercase, if it is, then adds it to the symbol
+                    symbol += letter
 
-
-            if number_of_atoms == '':
-
-                try:    #if a number comes after the symbol, this will repeat the symbol
-                    element_atom_amount =type(int(letter))
-                    if  element_atom_amount== int:
-                        number_of_atoms =number_of_atoms+(letter)
-                except:
-                    continue          
-            #if isinstance(int(number_of_atoms), int) == True:
                 
+                elif letter.isdigit() == True: # determines if a symbol is a number, if it is then adds it to number of atoms,
+                    number_of_atoms += letter
+
+
+                elif letter.isupper() == True: #checks if letter is upper, then 
+                    elements_in_formula+=repeating_atoms_of_elements(symbol, int(number_of_atoms))
+                    symbol = letter
+                    number_of_atoms = ''
+                
+                
+            index += 1
+            print(f'index = {index}')
+        print(index)
+        symbol = ''
+        number_of_atoms = ''
+        index = 0
 
 
 
     return elements_in_formula
 
+print(seperating_num_of_atoms_of_elements([input('Na2O2'), 'H2O']))
 
-
-def origional():
-    symbol = ''
-    letter = ''
-    try:    #if a number comes after the symbol, this will repeat the symbol
-        element_atom_amount =type(int(letter))
-        if  element_atom_amount== int:
-            for ammount in range(int(letter)-1):
-                elements_in_formula.append(symbol) 
-    except:
-
-        return symbol
-   
-
-
-
-
-print(seperating_num_of_atoms_of_elements([input('CaO12'), 'H12O1']))
+#print(repeating_atoms_of_elements('Ca', int('2')))

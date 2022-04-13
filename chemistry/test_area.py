@@ -6,7 +6,7 @@ def clearing_blank_spaces(element_list):
     return sorted_element_list
 
 
-def assigning_atoms_to_elements_from_compound(compound):
+def assigning_atoms_to_elements_from_compound(compound): #takes a string of a compound and breaks it up and returns a list of atoms
     list_of_atoms = []
     i =0
     symbol = ''
@@ -33,50 +33,23 @@ def assigning_atoms_to_elements_from_compound(compound):
     
     return list_of_atoms
 
-def seperating_compound_in_equation(reacatnts_or_products):  #takes the list of either products or reactant and breaks them up into their compounds
-    
+#print(assigning_atoms_to_elements_from_compound('CO2'))
+
+
+
+
+
+def seperating_compound_in_equation(reacatnts_or_products):  #takes the list of either products or reactant and breaks them up into their compounds 
+    list_of_elements = []
     for compound in reacatnts_or_products:
-        pass
+        elemental_list = assigning_atoms_to_elements_from_compound(compound = compound)
+        list_of_elements += clearing_blank_spaces(elemental_list)
+    return list_of_elements
 
 
-def main(formula):
- 
 
-    print(clearing_blank_spaces(assigning_atoms_to_elements_from_compound(formula)))
-
-    #print(chemical_formula_atom_list)
-    
-
-        
-
-
-#    letters.append(symbol)  
-#    print(letters)
-
-main(['Ca2O2'])
+print(seperating_compound_in_equation(['H22O10', 'CO2']))
 
 
 
 
-
-
-
-  #          print(f'{compound} length is {len(compound)}')
-
-
-           ##### 
-#            if index == len(compound): #checks if a letter is the last in a symbol in the compound
-#                if letter.islower() == True: #determines if symbol is lowercase, if it is, then adds it to the symbol
-#                    symbol += letter
-#                    elements_in_formula+= symbol
-
-                
-            #    elif letter.isdigit() == True: # determines if a symbol is a number, if it is then adds it to number of atoms,
-            #        number_of_atoms += letter
-            #        elements_in_formula+=repeating_atoms_of_elements(symbol, int(number_of_atoms))
-                    
-
-
-            #    elif letter.isupper() == True: #checks if letter is upper, then 
-            #        elements_in_formula += letter
-            #####

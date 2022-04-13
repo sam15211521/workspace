@@ -1,6 +1,3 @@
-from numpy import number
-
-
 def repeating_atoms_of_elements(symbol, number_of_atoms): # makes a list of repeating atoms based on the symbol and number of atoms of an element
     list_of_atoms = []
     for i in range(number_of_atoms):
@@ -8,45 +5,65 @@ def repeating_atoms_of_elements(symbol, number_of_atoms): # makes a list of repe
     return list_of_atoms
 
 
-def seperating_num_of_atoms_of_elements(compounds):
-    elements_in_formula =[]
-    symbol = ''                 # the chemical symbol
-    number_of_atoms = ''         # gives the amount of 
+def assigning_atoms_to_elements_from_compound(compound): #takes a string of a compound and breaks it up and returns a list of atoms
 
-    for compound in compounds:  #cycling through compounds
-        index = 0
-        for letter in compound: #cycling through the letter of the compounds
-
-            if symbol =='' and letter.isdigit() == False:     #checks if symbol is blank if blank adds letter to symbol (should not be a number)
-                symbol = letter
-
-           
-            else:               #if symbol  has a symbol already in it we need to now see if the symbol has any other compounents to it such as a lower case letter or a number
-                if letter.islower() == True: #determines if symbol is lowercase, if it is, then adds it to the symbol
-                    symbol += letter
-
+    list_of_atoms = []
+    i =0
+    symbol = ''
+    for letter in compound: #takes a one (1) chemical formula and breaks it appart into its symbols
+        try:
+            if letter.isalpha():
                 
-                elif letter.isdigit() == True: # determines if a symbol is a number, if it is then adds it to number of atoms,
-                    number_of_atoms += letter
-
-
-                elif letter.isupper() == True: #checks if letter is upper, then 
-                    elements_in_formula+=repeating_atoms_of_elements(symbol, int(number_of_atoms))
+                if letter.isupper():
+                    list_of_atoms.append(symbol)
                     symbol = letter
-                    number_of_atoms = ''
+                    i += 1
                 
-                
-            index += 1
-            print(f'index = {index}')
-        print(index)
-        symbol = ''
-        number_of_atoms = ''
-        index = 0
+                elif letter.islower():
+                    symbol += letter
+                    i += 1
+
+            elif letter.isdigit():
+                for character in range(len(letter)):
+                    list_of_atoms.append(symbol)
+                    i += 1
+        
+        except IndexError:
+            list_of_atoms += letter[i]
+    list_of_atoms.append(symbol)
+    
+    print( list_of_atoms)
+
+
+def extract_number(string):
+    return_value = ''
+    index = 0
+    for value in string:
+        if value.isdigit() ==True:
+            if return_value == '':
+                return_value = value
+                index +=1
+            else:
+                if string[index + 1] == return_value and value.isdigit() == True:
+                    return_value += value
+                    index += 1
+                else:
+                    return return_value
+        else:
+            continue
 
 
 
-    return elements_in_formula
 
-print(seperating_num_of_atoms_of_elements([input('Na2O2'), 'H2O']))
+    return return_value
 
-#print(repeating_atoms_of_elements('Ca', int('2')))
+
+def example(string):
+    lib = ['He', 'O', 'Na', 'H']
+    for i in string:
+        pass
+
+
+print(extract_number('a2c3'))
+
+#assigning_atoms_to_elements_from_compound(input('O12'))

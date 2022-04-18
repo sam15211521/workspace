@@ -10,52 +10,45 @@ def assigning_atoms_to_elements_from_compound(compound): #takes a string of a co
     list_of_atoms = []
     i =0
     symbol = ''
+    number = '1'
     for letter in compound: #takes a one (1) chemical formula and breaks it appart into its symbols
         try:
             if letter.isalpha():
                 
                 if letter.isupper():
-                    list_of_atoms.append(symbol)
-                    symbol = letter
-                    i += 1
+                    
+                    if symbol == '':
+                        symbol = letter
+                        i += 1
+                    elif symbol != '':
+                        for amount in range(int(number)):
+                            list_of_atoms.append(symbol)
                 
+
                 elif letter.islower():
                     symbol += letter
                     i += 1
 
             elif letter.isdigit():
-                for character in range(len(letter)):
-                    list_of_atoms.append(symbol)
-                    i += 1
+                if compound[i-1].isdigit() == False:
+                    continue
+                    
         
         except IndexError:
             list_of_atoms += letter[i]
     list_of_atoms.append(symbol)
     
-    print( list_of_atoms)
+    print(list_of_atoms)
+
+
+assigning_atoms_to_elements_from_compound('CaO')
+
+
+
 
 
 def extract_number(string):
-    return_value = ''
-    index = 0
-    for value in string:
-        if value.isdigit() ==True:
-            if return_value == '':
-                return_value = value
-                index +=1
-            else:
-                if string[index + 1] == return_value and value.isdigit() == True:
-                    return_value += value
-                    index += 1
-                else:
-                    return return_value
-        else:
-            continue
-
-
-
-
-    return return_value
+    pass
 
 
 def example(string):
@@ -64,6 +57,4 @@ def example(string):
         pass
 
 
-print(extract_number('a2c3'))
-
-#assigning_atoms_to_elements_from_compound(input('O12'))
+#print(extract_number('a2c3'))

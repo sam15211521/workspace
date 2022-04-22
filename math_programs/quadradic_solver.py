@@ -1,9 +1,13 @@
+class With_a_Kick:
+    def hit_me():
+        print('You are Hit')
+
 def not_main():
     print('Wrong Program Buddy')
     exit()
 
 
-def main():
+def quadradic():
     A = int(input("A"))
     B = int(input("B"))
     C = int(input('C'))
@@ -17,5 +21,4 @@ def main():
 
     print(A*positive**2 + B*positive + C)
 
-not_main()
-main()
+

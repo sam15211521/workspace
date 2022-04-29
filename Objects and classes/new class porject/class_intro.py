@@ -1,3 +1,6 @@
+from xml.dom.minidom import Element
+
+
 class Elements:
     number_of_element = 0
 
@@ -38,7 +41,8 @@ def making_elements():
     print(lst_of_element_objects)
     return(lst_of_element_objects)
 
-
+#def automatically_defining_elements():
+#    list_of_elements = [Element('H', 'Hydrogen', 1.00194), ['He', 'Helium', 4.003], ['Li', 'Lithium', 6.941], ['Be', 'Beryllium', 9.012182], ['','','',''], ['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],['','',''],['','',''],['','','','']]
     
 def main():
     lst_of_elements = making_elements()

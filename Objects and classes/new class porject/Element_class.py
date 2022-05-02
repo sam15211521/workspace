@@ -13,13 +13,55 @@ class Elements:
     #    print(f'Element {self.name} deleted')
     #    Elements.number_of_element -= 1
     
-    def compare_electronegativities(element1, element2): # prints out the electronegativities of two elements
-        print(f'The elements {element1.name} and {element2.name} have a mass of {element1.electronegativity} and {element2.electronegativity}')
+    def compare_electronegativities(element1, element2): # prints out the electronegativities of two elements as well as the type of bond they form
+        
+        name1 = eval(f'{element1}.name')
+        name2 = eval(f'{element2}.name')
+        electro1 = eval(f'{element1}.electronegativity')
+        electro2 = eval(f'{element2}.electronegativity')
+        electrodiff = abs(electro1-electro2)
+        
+        if electrodiff < 0.4:           # determines the type of bond
+            type_of_bond = 'non-polar covalent'
+        if electrodiff >= 0.4 and electrodiff <= 1.8:
+            type_of_bond = 'polar covalent'
+        if electrodiff > 1.8:
+            type_of_bond = 'ionic'
+        
+        print(f'\nThe elements {name1} and {name2} have an electronegativity of {electro1} and {electro2} respectivly\nAs well as an electronegativity difrence of {electrodiff}, making the bond {type_of_bond}\n')
     
+    def finding_elements_symbols_by_name(element_name='Hydrogen'): #returns the string symbol of the element chosen
+        for ele in element_list:
+            if element_name == ele.name:
+                return ele.symbol
+            else:
+                continue
+
+    def finding_elements_name_by_symbol(element_symbol = 'Hydrogen'): #returns the string name of the element chosen
+        for ele in element_list:
+            if element_symbol == ele.symbol:
+                return ele.name
+            else:
+                continue
+
+    def calling_atomic_number(element_name = 'None', element_symbol = 'N/a'):
+        for element in element_list:
+            if element_name == element.name or element_symbol == element.symbol:
+                return element.atomic_number
+
+    def calling_atomic_mass(element_name = 'None', element_symbol = 'N/a'):
+        for element in element_list:
+            if element_name == element.name or element_symbol == element.symbol:
+                return element.mass
+        
+    def calling_electronegativity(element_name = 'None', element_symbol = 'N/a'):
+        for element in element_list:
+            if element_name == element.name or element_symbol == element.symbol:
+                return element.atomic_number
 
     #def element_look_up(elementname, elementsymbol):
 
-
+### below are the diffrent elements of the periodic table
 
 H = Elements('H', 'Hydrogen', 1.01, 1, 2.20)
 
@@ -223,3 +265,10 @@ element_list =[H, He, Li, Be, B, C, N, O, F, Ne, Na, Mg, Al, Si, P, S, Cl, Ar, K
 #    print(abc.name)
 
 
+chosen = Elements.finding_elements_symbols_by_name('Hydrogen')
+
+print(eval(f'{chosen}.electronegativity'))
+
+Elements.compare_electronegativities('Na', 'Cl')
+
+print(Elements.calling_atomic_number( element_symbol= 'Br'))

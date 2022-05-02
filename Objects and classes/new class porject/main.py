@@ -1,6 +1,6 @@
 import Element_class
 from time import sleep
-def finding_element_name
+
 
 def electronegativities_prompt(): #this belongs not as a method but as a function
         print('This program compairs two elements and gives their electronegativity diffrences,\nas well as their predicted bond type')
@@ -28,9 +28,10 @@ def main():
 #main()
 #c = input('type an element symbol')
 
-aaa = 'H'
+aaa = 'Mo'
 
 for ele in Element_class.element_list:
     if aaa == ele.symbol:
         print(ele.name)
-    break
+    else:
+        continue

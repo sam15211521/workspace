@@ -1,3 +1,6 @@
+from periodictable import formula
+
+
 class Elements:
     number_of_element = 0
 
@@ -59,6 +62,18 @@ class Elements:
             if element_name == element.name or element_symbol == element.symbol:
                 return element.atomic_number
 
+    def making_compounds(element_list): #takes a list of a elements and combines them into a compound object with its formula as the variable it is bined to.
+        pass
+
+class Compounds(Elements):
+        ### Compounds made up of atoms of diffrent elements ###
+
+        def __init__(self, elements = [], chemical_formula = '',):
+            self.elements = elements
+            self.chemical_formula = chemical_formula
+            self.atoms_of_element = {}
+
+        
     #def element_look_up(elementname, elementsymbol):
 
 ### below are the diffrent elements of the periodic table
@@ -265,10 +280,10 @@ element_list =[H, He, Li, Be, B, C, N, O, F, Ne, Na, Mg, Al, Si, P, S, Cl, Ar, K
 #    print(abc.name)
 
 
-chosen = Elements.finding_elements_symbols_by_name('Hydrogen')
+#chosen = Elements.finding_elements_symbols_by_name('Hydrogen')
 
-print(eval(f'{chosen}.electronegativity'))
+#print(eval(f'{chosen}.electronegativity'))
 
-Elements.compare_electronegativities('Na', 'Cl')
+#Elements.compare_electronegativities('Na', 'Cl')
 
-print(Elements.calling_atomic_number( element_symbol= 'Br'))
+#print(Elements.calling_atomic_number( element_symbol= 'Br'))

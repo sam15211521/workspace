@@ -62,7 +62,7 @@ class Elements:
             if element_name == element.name or element_symbol == element.symbol:
                 return element.atomic_number
 
-    def making_compounds(element_list): #takes a list of a elements and combines them into a compound object with its formula as the variable it is bined to.
+    def making_compounds(list_of_elements): #takes a list of a elements and combines them into a compound object with its formula as the variable it is bined to.
         pass
 
 class Compounds(Elements):

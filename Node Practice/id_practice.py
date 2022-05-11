@@ -1,3 +1,6 @@
 #for i in range(1,257-1):
     #print(hex(i))
-print(hex(335188))
+#print(hex(335188))
+
+string = 'hello'
+print(string.upper())

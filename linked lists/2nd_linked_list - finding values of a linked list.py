@@ -1,6 +1,3 @@
-from tabnanny import check
-
-
 class Node:
     def __init__(self, value, next_node = None):
         self.value = value
@@ -54,11 +51,11 @@ ll.insert_beginning('And thus we go')
 #print(ll.list_list())
 
 def checking_next_node(): #this prints the value and a node list that can be copy pasted into the value of another node
-    print(ll.head_node.value)
+    print(f'\n### \n{ll.head_node.value}')
     #print(ll.head_node)
     string = 'll.head_node'
-    print(f'located at {string}')
-    prompt = input('do you want to find the next node value?    Y/N')
+    print(f'located at {string}\n###')
+    prompt = input('do you want to find the next node value?    Y/N   ')
     
     if prompt.upper() == 'Y':
         while eval(string+'.next_node') != None:
@@ -68,5 +65,7 @@ def checking_next_node(): #this prints the value and a node list that can be cop
             print(f'\n ### \nThe next node value is {new_value} \n at: {string} \n ### \n')
     else:
         return
-
+#print(ll.head_node.next_node.value)
 checking_next_node()
+
+#print(ll.head_node.next_node.next_node.value)

@@ -1,0 +1,3 @@
+name, age, ocupation
+sam, 30, teacher
+lani, 32, telemarketer

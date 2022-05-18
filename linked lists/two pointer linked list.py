@@ -62,6 +62,7 @@ def counting_index_of_nodes(node_list):
         i+=1
         current_node = current_node.get_next_node()
     print(f'TEST: {list_of_index}')
+    print(f'\nTEST: {list_of_nodes}')
 
 
 

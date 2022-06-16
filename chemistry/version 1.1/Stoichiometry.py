@@ -45,10 +45,14 @@ def finding_element_atoms_from_formula(chemical_fomula = ''): #returns a diction
                              
         return return_dict
 
+def finding_mass_of_dict_of_elements(Element_dict): #should come in form of [He:1, Si:3, ... ] function uses the mass from periodic table to determine the mass of a dictionary of elements.
+    pass
 
 def compound_finding():
     pass
 
+def after_fomrula_adding(): #optinons for option 1 in inputing_compounds 
+    pass
 
 def exit_program():
     print('\nGood Bye\n')
@@ -64,8 +68,10 @@ def inputing_compounds(): #initial inputing commands
         first_line = input(first_line_text_2)
     
     if first_line == '1': #enters just a formula
+        global compound_elements_present
+        compound_elements_present = finding_element_atoms_from_formula(input('Enter the formula of your compound:\n\n'))
 
-        pass
+        
     elif first_line == '2':
         pass
     elif first_line == '3':
@@ -80,6 +86,8 @@ def inputing_compounds(): #initial inputing commands
 
 
 def main():
+    
     inputing_compounds()
+    print(compound_elements_present)
 
 main()

@@ -1,0 +1,15 @@
+prime 
+nx1 = n
+
+ex: 1,2,3,5,7,11,13,17,...
+
+how to find primes:
+2n-1
+
+but with exceptions
+
+if n ends with 2,4,5,6,8,0, it is not a prime
+
+if int in n string sum and are divisable by 3 it is not a prime
+
+if last int in string n is doubled (d) then rest of int/10 is subtracted by d is divisable by 7 

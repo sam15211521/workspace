@@ -1,0 +1,4 @@
+there are 4 primes between 1 and 102
+3
+5
+7

@@ -1,13 +1,14 @@
 import numpy as np
-                        #[Lorie, Marty, Tori, Kurtz]
-movie_ratings = np.array([[63.0, 54.0, 70.0, 50.0],
-                          [94.0, 85.0, 89.0, 85.0],
-                          [64.0, 90.0, 73.0, 85.0]])
 
-movie_star_ratings = movie_ratings /20
+a = np.array([[3,3,4,5,], [2,4,8,6]])
 
-tori_ratings = movie_ratings[ :,2]
+new_array = a[:,0]
 
-marty_ratings = movie_ratings[ :, 1]
-print(marty_ratings[marty_ratings > 80])
+boolian = True
 
+bool2 = False
+
+abc = boolian | bool2
+
+print(abc)
+print(f'\n###\n{new_array}\n###\n')
